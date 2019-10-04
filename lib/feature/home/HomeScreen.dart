@@ -12,11 +12,13 @@
  */
 
 import 'package:flutter/material.dart';
+import 'package:flutter_template/feature/detail/DetailScreen.dart';
+import 'package:flutter_template/widgets/UserWidget.dart';
 
 class HomeScreen extends StatefulWidget {
   HomeScreen({Key key, this.title}) : super(key: key);
 
-  // This widget is the home page of your application. It is stateful, meaning
+  // This widget is the feature.home page of your application. It is stateful, meaning
   // that it has a State object (defined below) that contains fields that affect
   // how it looks.
 
@@ -43,6 +45,16 @@ class _HomeScreenState extends State<HomeScreen> {
       // called again, and so nothing would appear to happen.
       _counter++;
     });
+  }
+
+  void navigateToDetail(BuildContext context) {
+    _incrementCounter();
+
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => DetailScreen(title: "Detail Screen",),
+      ),
+    );
   }
 
   @override
@@ -86,11 +98,14 @@ class _HomeScreenState extends State<HomeScreen> {
               '$_counter',
               style: Theme.of(context).textTheme.display1,
             ),
+            UserWidget(),
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
+        onPressed: () {
+          navigateToDetail(context);
+        },
         tooltip: 'Increment',
         child: Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.

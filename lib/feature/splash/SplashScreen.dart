@@ -16,7 +16,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutter_template/home/HomeScreen.dart';
+import 'package:flutter_template/feature/home/HomeScreen.dart';
 
 class SplashScreen extends StatefulWidget {
 
@@ -66,7 +66,8 @@ class SplashScreenState extends State<SplashScreen> {
 
   onCompanyLogo() async {
 
-    Navigator.of(context).pushReplacement(
+    Navigator.pushReplacement(
+        context,
         MaterialPageRoute(builder: (context) => HomeScreen(title: "Hello World!",))
     );
   }
