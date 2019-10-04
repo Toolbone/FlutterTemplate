@@ -20,14 +20,32 @@ dependencies:
   flutter:
     sdk: flutter
 
-  # The following adds the Cupertino Icons font to your application.
-  # Use with the CupertinoIcons class for iOS style icons.
+  flutter_svg: ^0.14.1
   cupertino_icons: ^0.1.2
+  rxdart: ^0.22.3
+  http: ^0.12.0+2
+  shared_preferences: ^0.5.3+4
+  simple_animations: ^1.3.3
+  provider: ^3.1.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  flutter_driver:
+    sdk: flutter
 
+  flutter_launcher_icons: ^0.7.3
+  #apply this command
+  #flutter pub get
+  #flutter pub run flutter_launcher_icons:main
+
+flutter_icons:
+  ios: true
+  android: true
+  image_path_ios: "assets/launcher/icon_ios_1024x1024.png"
+  image_path_android: "assets/launcher/icon_android_1024x1024.png"
+  adaptive_icon_background: "assets/launcher/background_1024x1024.png"
+  adaptive_icon_foreground: "assets/launcher/foreground_1024x1024.png"
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -70,3 +88,40 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+
+  assets:
+    - res/graphics/
+
+  fonts:
+    - family: ALLER
+      fonts:
+        - asset: res/fonts/Aller_Bd.ttf
+        - asset: res/fonts/Aller_BdIt.ttf
+        - asset: res/fonts/Aller_It.ttf
+        - asset: res/fonts/Aller_Lt.ttf
+        - asset: res/fonts/Aller_LtIt.ttf
+        - asset: res/fonts/Aller_Rg.ttf
+
+    - family: OSWALD
+      fonts:
+        - asset: res/fonts/Oswald-Bold.ttf
+        - asset: res/fonts/Oswald-BoldItalic.ttf
+        - asset: res/fonts/Oswald-DemiBold.ttf
+        - asset: res/fonts/Oswald-Medium.ttf
+        - asset: res/fonts/Oswald-Regular.ttf
+        - asset: res/fonts/Oswald-RegularItalic.ttf
+
+    - family: ROBOTO
+      fonts:
+        - asset: res/fonts/Roboto-Bold.ttf
+        - asset: res/fonts/Roboto-BoldItalic.ttf
+        - asset: res/fonts/Roboto-Medium.ttf
+        - asset: res/fonts/Roboto-MediumItalic.ttf
+        - asset: res/fonts/Roboto-Regular.ttf
+        - asset: res/fonts/Roboto-Italic.ttf
+
+    - family: MovieFilmstrip
+      fonts:
+        - asset: res/fonts/MovieFilmstrip.ttf
+
+
