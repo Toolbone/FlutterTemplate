@@ -11,14 +11,14 @@
  * limitations under the License.
  */
 
-import 'BaseModel.dart';
+import 'Model.dart';
 import 'CollectionModel.dart';
 import 'GenreModel.dart';
 import 'ProductionCompanyModel.dart';
 import 'ProductionCountryModel.dart';
 import 'SpokenLanguage.dart';
 
-class MovieDetailModel extends BaseModel {
+class MovieDetailModel extends Model {
   bool adult;
   String backdropPath;
   CollectionModel belongsToCollection;

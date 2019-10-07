@@ -16,10 +16,10 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutter_template/blocs/BaseBloc.dart';
+import 'package:flutter_template/blocs/Bloc.dart';
 import 'package:flutter_template/blocs/MovieListBloc.dart';
 import 'package:flutter_template/features/home/HomeScreen.dart';
-import 'package:flutter_template/models/BaseModel.dart';
+import 'package:flutter_template/models/Model.dart';
 
 class SplashScreen extends StatefulWidget {
   SplashScreen({Key key}) : super(key: key);
@@ -34,7 +34,7 @@ class _SplashScreenState extends State<SplashScreen> {
   static String assetCompanyLogo = 'res/graphics/toolbone_logo-01.svg';
   static String assetFlutterLogo = 'res/graphics/flutter_logo-01.svg';
   final movieListBloc = MovieListBloc();
-  final List<BaseBloc<BaseModel>> blocList = <BaseBloc<BaseModel>>[];
+  final List<Bloc<Model>> blocList = <Bloc<Model>>[];
 
   static final Widget svgCompanyLogo = new SvgPicture.asset(
     assetCompanyLogo,
@@ -56,7 +56,6 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   void dispose() {
-    //movieListBloc.dispose();
     super.dispose();
   }
 

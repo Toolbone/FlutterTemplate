@@ -11,10 +11,10 @@
  * limitations under the License.
  */
 
-import 'BaseModel.dart';
+import 'Model.dart';
 import 'ImageModel.dart';
 
-class MovieImageModel extends BaseModel {
+class MovieImageModel extends Model {
   int id;
   List<ImageModel> posters = [];
   List<ImageModel> backdrops = [];

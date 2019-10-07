@@ -12,7 +12,7 @@
  */
 
 import 'package:flutter/material.dart';
-import 'package:flutter_template/blocs/BaseBloc.dart';
+import 'package:flutter_template/blocs/Bloc.dart';
 import 'package:flutter_template/blocs/MovieListBloc.dart';
 import 'package:flutter_template/features/detail/DetailScreen.dart';
 import 'package:flutter_template/models/ItemModel.dart';
@@ -28,7 +28,7 @@ class HomeScreen extends StatefulWidget {
   // case the title) provided by the parent (in this case the App widget) and
   // used by the build method of the State. Fields in a Widget subclass are
   // always marked "final".
-  final List<BaseBloc> blocs;
+  final List<Bloc> blocs;
   final String title;
 
   @override
@@ -85,7 +85,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             //UserWidget(),
             StreamBuilder(
-              initialData: movieListBloc.initialData,
+              initialData: movieListBloc.initialData as ItemModel,
               stream: movieListBloc.movieList,
               builder: (context, AsyncSnapshot<ItemModel> snapshot) {
                 if (snapshot.hasData) {
@@ -96,7 +96,6 @@ class _HomeScreenState extends State<HomeScreen> {
                 return Container(
                     padding: EdgeInsets.all(20.0),
                     child: Center(child: CircularProgressIndicator()));
-
               },
             ),
           ],
@@ -104,7 +103,11 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          movieListBloc.fetchMovieList("top_rated");
+          movieListBloc.refresh();
+          if(_counter==3){
+            movieListBloc.fetchMovieList("")
+          }
+          _incrementCounter();
           //navigateToDetail(context);
         },
         tooltip: 'Increment',

@@ -12,9 +12,9 @@
  * limitations under the License.
  */
 
-import 'BaseModel.dart';
+import 'Model.dart';
 
-class MovieVideosModel extends BaseModel {
+class MovieVideosModel extends Model {
 
   final int id;
   final List<Results> results;

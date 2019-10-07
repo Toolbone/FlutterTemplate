@@ -13,18 +13,24 @@
 
 import 'package:flutter_template/models/ItemModel.dart';
 import 'package:rxdart/rxdart.dart';
-import 'BaseBloc.dart';
+import 'Bloc.dart';
 
 
-class MovieListBloc extends BaseBloc<ItemModel> {
-  ItemModel initialData;
+class MovieListBloc extends Bloc<ItemModel> {
+
   Observable<ItemModel> get movieList => fetcher.stream;
+  String _type = "";
 
   fetchMovieList(String type) async {
+    _type = type;
     ItemModel itemModel = await repository.fetchMovieList(type);
     fetcher.sink.add(itemModel);
     initialData = itemModel;
-    print("total PAges ${itemModel.totalPages}");
+  }
+
+  void refresh() async{
+    ItemModel itemModel = await repository.fetchMovieList(_type);
+    fetcher.sink.add(itemModel);
   }
 
   @override

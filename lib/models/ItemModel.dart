@@ -12,9 +12,9 @@
  * limitations under the License.
  */
 
-import 'BaseModel.dart';
+import 'Model.dart';
 
-class ItemModel extends BaseModel{
+class ItemModel extends Model{
   int _page;
   int _totalResults;
   int _totalPages;

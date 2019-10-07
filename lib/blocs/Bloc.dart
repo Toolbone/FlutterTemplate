@@ -11,13 +11,14 @@
  * limitations under the License.
  */
 
-import 'package:flutter_template/models/BaseModel.dart';
+import 'package:flutter_template/models/Model.dart';
 import 'package:flutter_template/resources/Repository.dart';
 import 'package:rxdart/rxdart.dart';
 
-abstract class BaseBloc<T extends BaseModel> {
+abstract class Bloc<T extends Model> {
   final repository = Repository();
   final fetcher = PublishSubject<T>();
+  Model initialData;
 
   void dispose() {
     print("disposed ${repository.hashCode}");
