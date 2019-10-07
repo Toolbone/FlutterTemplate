@@ -21,7 +21,7 @@ class _UserWidgetState extends State<UserWidget> {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder(
-      initialData: movieListBloc.movieList,
+      //initialData: movieListBloc.movieList,
       stream: movieListBloc.movieList,
       builder: (context, AsyncSnapshot<ItemModel> snapshot) {
         if (snapshot.hasData) {
