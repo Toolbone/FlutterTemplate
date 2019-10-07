@@ -1,6 +1,6 @@
 # Flutter Template
 
-Flutter template to start your flatter development
+Flutter template to start your flatter mobile app development
 
 ### Features
 - Splash screen - multiple splash screen using SVG
