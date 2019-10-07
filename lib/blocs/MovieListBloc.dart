@@ -17,18 +17,18 @@ import 'BaseBloc.dart';
 
 
 class MovieListBloc extends BaseBloc<ItemModel> {
+  ItemModel initialData;
   Observable<ItemModel> get movieList => fetcher.stream;
 
   fetchMovieList(String type) async {
     ItemModel itemModel = await repository.fetchMovieList(type);
     fetcher.sink.add(itemModel);
+    initialData = itemModel;
+    print("total PAges ${itemModel.totalPages}");
   }
 
   @override
   dispose() {
-    // TODO: implement dispose
-    //this.dispose();
     return super.dispose();
   }
-
 }

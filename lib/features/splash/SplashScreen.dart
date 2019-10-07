@@ -16,24 +16,25 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_template/blocs/BaseBloc.dart';
 import 'package:flutter_template/blocs/MovieListBloc.dart';
 import 'package:flutter_template/features/home/HomeScreen.dart';
+import 'package:flutter_template/models/BaseModel.dart';
 
 class SplashScreen extends StatefulWidget {
-
   SplashScreen({Key key}) : super(key: key);
 
   @override
-  State<StatefulWidget> createState() => SplashScreenState();
+  State<StatefulWidget> createState() => _SplashScreenState();
 }
 
-class SplashScreenState extends State<SplashScreen> {
+class _SplashScreenState extends State<SplashScreen> {
   static bool isCompanyShown = true;
   static bool isFlutterShown = false;
   static String assetCompanyLogo = 'res/graphics/toolbone_logo-01.svg';
   static String assetFlutterLogo = 'res/graphics/flutter_logo-01.svg';
   final movieListBloc = MovieListBloc();
-  final holdBlocList=[];
+  final List<BaseBloc<BaseModel>> blocList = <BaseBloc<BaseModel>>[];
 
   static final Widget svgCompanyLogo = new SvgPicture.asset(
     assetCompanyLogo,
@@ -53,27 +54,10 @@ class SplashScreenState extends State<SplashScreen> {
     loadPreloadData();
   }
 
-  void loadPreloadData() {
-    movieListBloc.fetchMovieList("top_rated");
-  }
-
-  Future<Timer> loadSplashLogos() async {
-    return new Timer(Duration(seconds: 5), hideSplashLogos);
-  }
-
-  Future<Timer> hideSplashLogos() async {
-    setState(() {
-      isCompanyShown = false;
-      isFlutterShown = true;
-    });
-    return new Timer(Duration(seconds: 3), onCompanyLogo);
-  }
-
-  onCompanyLogo() async {
-    Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => HomeScreen(title: "Hello World!",))
-    );
+  @override
+  void dispose() {
+    //movieListBloc.dispose();
+    super.dispose();
   }
 
   @override
@@ -101,5 +85,37 @@ class SplashScreenState extends State<SplashScreen> {
         ),
       ),
     ]);
+  }
+
+
+
+  Future<Timer> loadSplashLogos() async {
+    return new Timer(Duration(seconds: 5), hideSplashLogos);
+  }
+
+  Future<Timer> hideSplashLogos() async {
+    setState(() {
+      isCompanyShown = false;
+      isFlutterShown = true;
+    });
+    return new Timer(Duration(seconds: 3), onCompanyLogo);
+  }
+
+  void loadPreloadData() {
+    movieListBloc.fetchMovieList("top_rated");
+
+    blocList.add(movieListBloc);
+  }
+
+  void onCompanyLogo() async {
+    Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+            builder: (context) => HomeScreen(
+              title: "Hello World!",
+              blocs: blocList,
+            )
+        )
+    );
   }
 }
