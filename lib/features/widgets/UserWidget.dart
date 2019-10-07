@@ -16,12 +16,12 @@ class _UserWidgetState extends State<UserWidget> {
   @override
   void initState() {
     super.initState();
-    movieListBloc.fetchMovieList("top_rated");
   }
 
   @override
   Widget build(BuildContext context) {
     return StreamBuilder(
+      initialData: movieListBloc.movieList,
       stream: movieListBloc.movieList,
       builder: (context, AsyncSnapshot<ItemModel> snapshot) {
         if (snapshot.hasData) {

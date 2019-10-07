@@ -30,4 +30,5 @@ class MovieListBloc extends BaseBloc<ItemModel> {
     //this.dispose();
     return super.dispose();
   }
+
 }

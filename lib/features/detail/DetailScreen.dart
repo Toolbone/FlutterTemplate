@@ -12,7 +12,7 @@
  */
 
 import 'package:flutter/material.dart';
-import 'package:flutter_template/widgets/UserWidget.dart';
+import 'package:flutter_template/features/widgets/UserWidget.dart';
 
 class DetailScreen extends StatefulWidget {
   DetailScreen({Key key, this.title}) : super(key: key);

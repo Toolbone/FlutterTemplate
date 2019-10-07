@@ -16,7 +16,8 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutter_template/feature/home/HomeScreen.dart';
+import 'package:flutter_template/blocs/MovieListBloc.dart';
+import 'package:flutter_template/features/home/HomeScreen.dart';
 
 class SplashScreen extends StatefulWidget {
 
@@ -31,6 +32,8 @@ class SplashScreenState extends State<SplashScreen> {
   static bool isFlutterShown = false;
   static String assetCompanyLogo = 'res/graphics/toolbone_logo-01.svg';
   static String assetFlutterLogo = 'res/graphics/flutter_logo-01.svg';
+  final movieListBloc = MovieListBloc();
+  final holdBlocList=[];
 
   static final Widget svgCompanyLogo = new SvgPicture.asset(
     assetCompanyLogo,
@@ -47,10 +50,12 @@ class SplashScreenState extends State<SplashScreen> {
     super.initState();
 
     loadSplashLogos();
-    loadData();
+    loadPreloadData();
   }
 
-  void loadData() {}
+  void loadPreloadData() {
+    movieListBloc.fetchMovieList("top_rated");
+  }
 
   Future<Timer> loadSplashLogos() async {
     return new Timer(Duration(seconds: 5), hideSplashLogos);
@@ -65,7 +70,6 @@ class SplashScreenState extends State<SplashScreen> {
   }
 
   onCompanyLogo() async {
-
     Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => HomeScreen(title: "Hello World!",))

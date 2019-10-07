@@ -3,7 +3,7 @@
 Flutter template to start your flatter development
 
 ### Features
-- Splash screen - multiple splash screen
+- Splash screen - multiple splash screen using SVG
 - BLoC design pattern with RXDart
 - API calls - https client with DIO
 

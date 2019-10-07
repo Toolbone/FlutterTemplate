@@ -20,6 +20,7 @@ abstract class BaseBloc<T extends BaseModel> {
   final fetcher = PublishSubject<T>();
 
   void dispose() {
+    print("disposed ${repository.hashCode}");
     fetcher.close();
   }
 }

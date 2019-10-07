@@ -12,8 +12,8 @@
  */
 
 import 'package:flutter/material.dart';
-import 'package:flutter_template/feature/detail/DetailScreen.dart';
-import 'package:flutter_template/widgets/UserWidget.dart';
+import 'package:flutter_template/features/detail/DetailScreen.dart';
+import 'package:flutter_template/features/widgets/UserWidget.dart';
 
 class HomeScreen extends StatefulWidget {
   HomeScreen({Key key, this.title}) : super(key: key);

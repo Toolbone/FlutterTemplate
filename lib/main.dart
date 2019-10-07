@@ -12,7 +12,7 @@
  */
 
 import 'package:flutter/material.dart';
-import 'feature/splash/SplashScreen.dart';
+import 'features/splash/SplashScreen.dart';
 
 void main() => runApp(ToolboneApp());
 
